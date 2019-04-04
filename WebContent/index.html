@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="description" content="Java y aplicaciones avanzadas 2016 Entrega inicial">
+<meta name="keywords" content="HTML,CSS,Java y aplicaciones avanzadas,unlp,curso 2019">
+<meta name="author" content="Grupo">
+<!-- CSS -->
+<link type="text/css" rel="stylesheet" href="./resources/css/estilo.css" />
+<link type="text/css" rel="stylesheet" href="./resources/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="./resources/css/bootstrap-theme.min.css" />
+<link rel="shortcut icon" href="./resources/img/cropped-logo-balp-512px.png" />
+<!-- JavaScript -->
+<script src="./resources/js/jquery-3.2.1.js"></script>
+<script src="./resources/js/bootstrap.js"></script>
+<title>Banco de alimentos</title>
+</head>
+<body>
+	<div class="container">
+		<header class="row">
+			<div class="col-5">
+				<h1>Banco de alimentos</h1>
+			</div>
+			<div class="col-7">
+				<form action="Login" class="form-inline">
+					<div class="form-group mb-2">
+						<input type="text" id="username" name="username" class="form-control" title="Ingrese Usuario" placeholder="Usuario">
+					</div>
+					<div class="form-group mx-sm-3 mb-2">
+						<input type="password" id="password" name="password"class="form-control" title="Ingrese contraseña" placeholder="Contraseña">
+					</div>
+					<input type="submit" class="btn btn-primary mb-2" value="Ingresar">
+				</form>
+			</div>
+		</header>
+		<div class="row wrapper">
+			<div class="col-md" style="margin-top: 200px">
+				<img alt="logo banco alimentos" src="./resources/img/logo-balp-512px.png">
+			</div>
+			<div class="col-md">
+				<form action="SignUp" id="signUp" class="form-horizontal" method="post">
+					<fieldset>
+						<legend class="">Unase al banco de alimentos</legend>
+						<div class="form-group">
+							<!-- Username -->
+							<label class="control-label" for="username_reg">Nombre de usuario</label>
+							<div class="controls">
+								<input type="text" id="username_reg" name="username" placeholder="" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<!-- E-mail -->
+							<label class="control-label" for="email">E-mail</label>
+							<div class="controls">
+								<input type="text" id="email" name="email" placeholder="" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<!-- Telefono -->
+							<label class="control-label" for="telefono">Teléfono</label>
+							<div class="contols">
+								<input type="tel" id="telefono" name="telefono" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<!-- Password-->
+							<label class="control-label" for="password_reg">Password</label>
+							<div class="controls">
+								<input type="password" id="password_reg" name="password" placeholder="" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<!-- Password -->
+							<label class="control-label" for="password_confirm">Password (Confirmar)</label>
+							<div class="controls">
+								<input type="password" id="password_confirm" name="password_confirm" placeholder="" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<!-- Empresa -->
+							<label class="control-label" for="empresa">Empresa u organización</label>
+							<div class="controls">
+								<input type="text" id="empresa" name="empresa" placeholder="" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<!-- Domicilio -->
+							<label class="control-label" for="domicilio">Domicilio</label>
+							<div class="controls">
+								<input type="text" id="domicilio" name="domicilio" placeholder="" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<!-- Nombre -->
+							<label class="control-label" for="nombre">Nombre persona de contacto</label>
+							<div class="controls">
+								<input type="text" id="nombre" name="nombre" placeholder="" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<!-- Horario -->
+							<label class="control-label" for="horario">Horarios de contacto</label>
+							<div class="controls"><input type="text" id="horario" name="horario" placeholder="" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<!-- Button -->
+							<div class="controls">
+								<button class="btn btn-success">Registrarse</button>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<footer class="row">
+			<div class="col-md">Java y aplicaciones avanzadas 2019</div>
+		</footer>
+	</div>
+</body>
+</html>

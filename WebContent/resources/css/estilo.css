@@ -1,0 +1,21 @@
+div.container {
+	width: 100%;
+	border: 1px solid gray;
+}
+
+header, footer {
+	padding: 1em;
+	color: white;
+	background-color: #a30a16;
+	clear: left;
+	text-align: center;
+}
+
+.wrapper {
+	padding: 5px;
+}
+
+#signUp {
+	padding: 5px;
+	border: 1px solid black;
+}
