@@ -19,3 +19,8 @@ header, footer {
 	padding: 5px;
 	border: 1px solid black;
 }
+
+.mapa {
+	height: 95%;
+	width: 95%;
+}
