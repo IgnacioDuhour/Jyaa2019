@@ -14,7 +14,17 @@
 	<script src="../resources/js/jquery-3.2.1.js"></script>
 	<script src="../resources/js/bootstrap.js"></script>
 	<script src="../resources/js/scripts.js"></script>
+	<!-- LeaFlet -->
+	<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
 	<title>Banco de alimentos</title>
+	<style type="text/css">
+		#map {
+			width: 100%;
+			height: 580px;
+			box-shadow: 5px 5px 5px #888;
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -82,12 +92,24 @@
 				</table>
 			</div>
 			<div class="col-md">
-				<img class="mapa" alt="mapa" src="../resources/img/mapa.png">
+				<!-- img class="mapa" alt="mapa" src="../resources/img/mapa.png" -->
+				<div id="map" class="mapa"></div>
 			</div>
 		</div>
 		<footer class="row">
 			<div class="col-md">Java y aplicaciones avanzadas 2019</div>
 		</footer>
 	</div>
+	<script type="text/javascript">
+		var map = L.map('map').
+		setView([-34.90348, -57.9376558], 15);
+		L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+			maxZoom: 19
+			}).addTo(map);
+		L.control.scale().addTo(map);
+	 	
+		L.marker([-34.90348, -57.9376558],{draggable: false}).addTo(map);
+	</script>
 </body>
 </html>
