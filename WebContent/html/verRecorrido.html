@@ -17,6 +17,8 @@
 	<!-- LeaFlet -->
 	<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+	<!-- Awesome font -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
 	<title>Banco de alimentos</title>
 </head>
 <body>
@@ -71,18 +73,34 @@
 							<th class="encabezado">Direccion</th>
 							<th class="encabezado">Cantidad de Productos</th>
 							<th class="encabezado">Fecha de Vencimiento</th>
+							<th class="encabezado">Fecha de Retiro</th>
+							<th class="encabezado">Horario de Retiro</th>
 							<th class="encabezado"></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td class="dato"> nombre </td>
-							<td class="dato"> apellido </td>
-							<td class="dato"> username </td>
-							<td class="dato"> fechaAlta </td>
+							<td class="dato"> 50 Y 120 </td>
+							<td class="dato"> 10 </td>
+							<td class="dato"> 14/4/2019 </td>
+							<td class="dato"> 10/4/2019 </td>
+							<td class="dato"> 15:30 </td>
 							<td class="dato">
-								<a href="marcarDonacion.html" class="glyphicon glyphicon-pencil" title="Marcar retirada">Marcar retirada</a>
-								<a href="#" class="glyphicon glyphicon-trash" onclick="return confirmDelete()" title="Eliminar">Eliminar</a>
+								<a href="marcarDonacion.html" class="far fa-edit" title="Editar"></a>
+								<a href="#" class="far fa-trash-alt" onclick="return confirmDelete()" title="Eliminar"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="dato"> nombre </td>
+							<td class="dato"> 50 Y 120 </td>
+							<td class="dato"> 10 </td>
+							<td class="dato"> 14/4/2019 </td>
+							<td class="dato"> 10/4/2019 </td>
+							<td class="dato"> 16:00 </td>
+							<td class="dato">
+								<a href="marcarDonacion.html" class="far fa-edit" title="Editar"></a>
+								<a href="#" class="far fa-trash-alt" onclick="return confirmDelete()" title="Eliminar"></a>
 							</td>
 						</tr>
 					</tbody>
@@ -92,6 +110,64 @@
 				<div id="map" class="mapa"></div>
 			</div>
 		</div>
+		<!-- Foro -->
+		<div class="col-md">
+			<form action="">
+				<div class="form-group">
+					<!-- Comentario -->
+					<label class="control-label" for="comentario">Comentarios:</label>
+					<div class="contols">
+						<textarea class="form-control" id="comentario" rows="3"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<!-- Button -->
+					<div class="controls">
+						<button class="btn btn-success">Guardar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="container">
+			<h2 class="text-center">Comentarios:</h2>
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-2">
+								<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+								<p class="text-secondary text-center">Hace 15 Minutos</p>
+							</div>
+							<div class="col-md-10">
+								<p>
+									<a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html">
+										<strong>User 1</strong>
+									</a>
+								</p>
+								<div class="clearfix"></div>
+								<p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card card-inner">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-2">
+								<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+								<p class="text-secondary text-center">Hace 15 Minutos</p>
+							</div>
+							<div class="col-md-10">
+								<p>
+									<a href="https://maniruzzaman-akash.blogspot.com/p/contact.html">
+										<strong>User 2</strong>
+									</a>
+								</p>
+								<p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		<footer class="row">
 			<div class="col-md">Java y aplicaciones avanzadas 2019</div>
 		</footer>

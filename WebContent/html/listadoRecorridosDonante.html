@@ -17,10 +17,12 @@
 	<!-- LeaFlet -->
 	<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+	<!-- Awesome font -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
 	<title>Banco de alimentos</title>
 </head>
 <body>
-	<div class="container">
+<div class="container">
 		<header class="row">
 			<div class="col-5">
 				<h1>Banco de alimentos</h1>
@@ -32,36 +34,30 @@
 			</div>
 		</header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light row">
-			<a class="navbar-brand" href="#">Banco de alimentos</a>
+			<a class="navbar-brand" href="#">Donante</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="navbar-nav">
-					<li class="nav-item active">
-						<a class="nav-link" href="usuarioBanco.html">Home<span class="sr-only">(current)</span></a>
+					<li class="nav-item active"><a class="nav-link"
+						href="usuarioDonante.html">Home<span class="sr-only">(current)</span></a></li>
+					<li class="nav-item">
+						<a class="nav-link" href="modificarDonante.html">Modificar datos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="listadoDonaciones.html">Donaciones</a>
+						<a class="nav-link" href="listadoRecorridosDonante.html">Recorridos</a>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recorridos</a>
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Donaciones </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="nuevoRecorrido.html">Nuevo</a>
-							<a class="dropdown-item" href="listadoRecorridos.html">Ver Recorridos</a>
-						</div>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Donantes </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="nuevoDonante.html">Nuevo</a>
-							<a class="dropdown-item" href="listadoDonantes.html">Ver Donantes</a>
+							<a class="dropdown-item" href="nuevoProducto.html">Nueva</a>
 						</div>
 					</li>
 				</ul>
 			</div>
 		</nav>
-		<h3 class="text-center">Donanciones</h3>
+		<h3 class="text-center">Recorridos</h3>
 		<div class="row wrapper">
 			<div class="table-responsive col-md">
 				<table class="table table-striped table-bordered">
@@ -69,43 +65,36 @@
 						<tr>
 							<th class="encabezado">Empresa</th>
 							<th class="encabezado">Direccion</th>
-							<th class="encabezado">Cantidad de Productos</th>
-							<th class="encabezado">Fecha de Vencimiento</th>
+							<th class="encabezado">Fecha de Retiro</th>
+							<th class="encabezado">Horario de Retiro</th>
 							<th class="encabezado"></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td class="dato"> nombre </td>
-							<td class="dato"> apellido </td>
-							<td class="dato"> username </td>
-							<td class="dato"> fechaAlta </td>
+							<td class="dato"> 50 Y 120 </td>
+							<td class="dato"> 10/4/2019 </td>
+							<td class="dato"> 14:30 </td>
 							<td class="dato">
-								<a href="marcarDonacion.html" class="glyphicon glyphicon-pencil" title="Marcar retirada">Marcar retirada</a>
-								<a href="#" class="glyphicon glyphicon-trash" onclick="return confirmDelete()" title="Eliminar">Eliminar</a>
+								<a href="verRecorridoDonante.html" class="fas fa-info" title="Ver detalles"></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="dato"> nombre </td>
+							<td class="dato"> 50 Y 120 </td>
+							<td class="dato"> 10/4/2019 </td>
+							<td class="dato"> 16:00 </td>
+							<td class="dato">
+								<a href="verRecorridoDonante.html" class="fas fa-info" title="Ver detalles"></a>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<div class="col-md">
-				<div id="map" class="mapa"></div>
-			</div>
-		</div>
+			</div></div>
 		<footer class="row">
 			<div class="col-md">Java y aplicaciones avanzadas 2019</div>
 		</footer>
-	</div>
-	<script type="text/javascript">
-		var map = L.map('map').
-		setView([-34.90348, -57.9376558], 15);
-		L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-			maxZoom: 19
-			}).addTo(map);
-		L.control.scale().addTo(map);
-	 	
-		L.marker([-34.90348, -57.9376558],{draggable: false}).addTo(map);
-	</script>
+		</div>
 </body>
 </html>

@@ -29,7 +29,7 @@
 			</div>
 		</header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light row">
-			<a class="navbar-brand" href="#">Navbar</a>
+			<a class="navbar-brand" href="#">Donante</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -39,21 +39,56 @@
 						<a class="nav-link" href="admin.html">Home<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Features</a>
+						<a class="nav-link" href="modificarDonante.html">Modificar datos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Pricing</a>
+						<a class="nav-link" href="listadoRecorridosDonante.html">Recorridos</a>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Usuarios </a>
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Donaciones </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="nuevoUsuario.html">Nuevo</a>
-							<a class="dropdown-item" href="listadoUsuarios.html">Ver Usuarios</a>
+							<a class="dropdown-item" href="nuevoProducto.html">Nueva</a>
 						</div>
 					</li>
 				</ul>
 			</div>
 		</nav>
+		<div class="col-md">
+			<form action="">
+				<div class="form-group">
+					<!-- sucursal -->
+					<label class="control-label" for="nombre">Sucursal</label>
+					<div class="contols">
+						<input type="text" id="sucursal" name="sucursal" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<!-- direccion -->
+					<label class="control-label" for="direccion">Direccion</label>
+					<div class="contols">
+						<input type="text" id="direccion" name="direccion" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<!-- fecharRetiro -->
+					<label class="control-label" for="username_reg">Fecha Retiro</label>
+					<div class="controls">
+						<input type="date" id="fecharetiro" name="fechaRetiro" placeholder="" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<!-- horaRetiro -->
+					<label class="control-label" for="horaretiro">Hora Retiro</label>
+					<div class="controls">
+						<input type="time" id="horaretiro" name="horaRetiro" placeholder="" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<!-- Button -->
+					<div class="controls"><button class="btn btn-success">Guardar</button></div>
+				</div>
+			</form>
+		</div>
 		<footer class="row">
 			<div class="col-md">Java y aplicaciones avanzadas 2019</div>
 		</footer>
