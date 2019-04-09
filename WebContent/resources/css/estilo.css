@@ -33,13 +33,19 @@ header, footer {
 	border-collapse: collapse;
 	text-align: center;
 }
+
 .mapa {
 	height: 95%;
 	width: 95%;
 }
 
 #map {
-			width: 100%;
-			height: 580px;
-			box-shadow: 5px 5px 5px #888;
-		}
+	width: 100%;
+	height: 580px;
+	box-shadow: 5px 5px 5px #888;
+}
+.tabla {
+	display:block;
+	overflow:auto;
+	height: 100%;
+}

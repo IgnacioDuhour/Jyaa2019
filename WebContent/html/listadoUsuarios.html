@@ -12,8 +12,10 @@
 	<link rel="shortcut icon" href="../resources/img/cropped-logo-balp-512px.png" />
 	<!-- JavaScript -->
 	<script src="../resources/js/jquery-3.2.1.js"></script>
-	<script src="../resources/js/bootstrap.js"></script>
+	<script src="../resources/js/bootstrap.min.js"></script>
 	<script src="../resources/js/scripts.js"></script>
+	<!-- Awesome font -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
 	<title>Banco de alimentos</title>
 </head>
 <body>
@@ -37,12 +39,6 @@
 				<ul class="navbar-nav">
 					<li class="nav-item active">
 						<a class="nav-link" href="admin.html">Home<span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Features</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Pricing</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Usuarios </a>
@@ -73,8 +69,8 @@
 							<td class="dato"> username </td>
 							<td class="dato"> fechaAlta </td>
 							<td class="dato">
-								<a href="nuevoUsuario.html" class="glyphicon glyphicon-pencil" title="Editar">Editar</a>
-								<a href="" class="glyphicon glyphicon-trash" onclick="return confirmDelete()" title="Eliminar">Eliminar</a>
+								<a href="nuevoUsuario.html" class="far fa-edit" title="Editar"></a>
+								<a href="" class="far fa-trash-alt" onclick="return confirmDelete()" title="Eliminar"></a>
 							</td>
 						</tr>
 					</tbody>
