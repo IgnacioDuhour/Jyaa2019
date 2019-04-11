@@ -14,6 +14,11 @@
 	<script src="../resources/js/jquery-3.2.1.js"></script>
 	<script src="../resources/js/bootstrap.min.js"></script>
 	<script src="../resources/js/scripts.js"></script>
+	<!-- LeaFlet -->
+	<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+	<!-- Awesome font -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
 	<title>Banco de alimentos</title>
 </head>
 <body>
@@ -29,7 +34,7 @@
 			</div>
 		</header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light row">
-			<a class="navbar-brand" href="#">Navbar</a>
+			<a class="navbar-brand" href="#">Banco de alimentos</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -58,39 +63,44 @@
 				</ul>
 			</div>
 		</nav>
-		<div class="col-md">
-			<form action="usuarioBanco.html" id="signUp" class="form-horizontal" method="post">
-				<fieldset>
-					<legend class="">Marcar Donanci&oacute;n Retirada</legend>
-					<div class="form-group">
-						<!-- Empresa -->
-						<label class="control-label" for="empresa">Empresa</label>
-						<div class="controls">
-							<input type="text" id="empresa" name="empresa" placeholder="Empresa Uno" readonly="readonly" class="form-control">
-						</div>
-					</div>
-					<div class="form-group">
-						<!-- Numero remito -->
-						<label class="control-label" for="remito">Remito</label>
-						<div class="controls">
-							<input type="number" id="remito" name="remito" placeholder="" class="form-control">
-						</div>
-					</div>
-					<div class="form-group">
-						<!-- Fecha de retiro -->
-						<label class="control-label" for="fecha">Fecha de retiro</label>
-						<div class="contols">
-							<input type="date" id="fecha" name="fecha" class="form-control">
-						</div>
-					</div>
-					<div class="form-group">
-						<!-- Button -->
-						<div class="controls">
-							<button class="btn btn-success">Guardar</button>
-						</div>
-					</div>
-				</fieldset>
-			</form>
+		<h3 class="text-center">Productos</h3>
+		<div class="row wrapper">
+			<div class="table-responsive col-md">
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th class="encabezado">Tipo de Producto</th>
+							<th class="encabezado">Marca</th>
+							<th class="encabezado">Peso/capacidad x envase</th>
+							<th class="encabezado">Cantidad de unidades</th>
+							<th class="encabezado">Fecha de Vencimiento</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="dato"> Leche </td>
+							<td class="dato"> La Serenisima </td>
+							<td class="dato"> 1 Litro </td>
+							<td class="dato"> 25 </td>
+							<td class="dato"> 10/4/2019 </td>
+						</tr>
+						<tr>
+							<td class="dato"> Arroz </td>
+							<td class="dato"> Gallo </td>
+							<td class="dato"> 500 gramos </td>
+							<td class="dato"> 20 </td>
+							<td class="dato"> 10/4/2019 </td>
+						</tr>
+						<tr>
+							<td class="dato"> Fideos tirabuzon </td>
+							<td class="dato"> Luchetti </td>
+							<td class="dato"> 500 gramos </td>
+							<td class="dato"> 20 </td>
+							<td class="dato"> 10/4/2019 </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<footer class="row">
 			<div class="col-md">Java y aplicaciones avanzadas 2019</div>

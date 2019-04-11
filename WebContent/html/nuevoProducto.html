@@ -14,6 +14,9 @@
 	<script src="../resources/js/jquery-3.2.1.js"></script>
 	<script src="../resources/js/bootstrap.min.js"></script>
 	<script src="../resources/js/scripts.js"></script>
+	<!-- LeaFlet -->
+	<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
 	<title>Banco de alimentos</title>
 </head>
 <body>
@@ -70,6 +73,16 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<!-- ubicacion -->
+					<label class="control-label" for="ubicacion">Ubicacion</label>
+					<div class="contols">
+						<input type="text" id="ubicacion" name="ubicacion" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<div id="map" class="mapa"></div>
+				</div>
+				<div class="form-group">
 					<!-- fecharRetiro -->
 					<label class="control-label" for="username_reg">Fecha Retiro</label>
 					<div class="controls">
@@ -87,7 +100,55 @@
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th class="encabezado"></th>
+							<th class="encabezado">Tipo Producto</th>
+							<th class="encabezado">Marca</th>
+							<th class="encabezado">Peso/Capacidad</th>
+							<th class="encabezado">Cantidad Unidades</th>
+							<th class="encabezado">Fecha Vencimiento</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="dato">
+								<input type="text" id="tipo" name="tipo" placeholder="Tipo de Producto" class="form-control"> 
+							</td>
+							<td class="dato"> 
+								<input type="text" id="marca" name="marca" placeholder="Marca" class="form-control"> 
+							</td>
+							<td class="dato"> 
+								<input type="text" id="capacidad" name="capacidad" placeholder="Capacidad" class="form-control">
+							</td>
+							<td class="dato">
+								<div class="form-group">
+									<!-- Cantidad de unidades -->
+									<div class="controls">
+										<input type="number" id="cantidad" name="cantidad" placeholder="" class="form-control">
+									</div>
+								</div>
+							</td>
+							<td class="dato">
+								<div class="form-group">
+									<!-- Fecha de vencimiento -->
+									<div class="controls">
+										<input type="date" id="fecha" name="fecha[]" placeholder="" class="form-control">
+									</div>
+								</div>
+							</td>
+							<td class="dato">
+								<div class="form-group">
+									<!-- Boton Agregar -->
+									<div class="controls">
+										<input type="button" class="btn btn-primary" value="Agregar">
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
 							<th class="encabezado">Tipo Producto</th>
 							<th class="encabezado">Marca</th>
 							<th class="encabezado">Peso/Capacidad</th>
@@ -97,52 +158,18 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="dato">
-								<input type="checkbox" name="id[]">
-							</td>
-							<td class="dato"> tipo Producto1 </td>
-							<td class="dato"> Marca 1 </td>
-							<td class="dato"> Peso 1 </td>
-							<td class="dato">
-								<div class="form-group">
-									<!-- Fecha -->
-									<div class="controls">
-										<input type="number" id="horario" name="fecha[]" placeholder="" class="form-control">
-									</div>
-								</div>
-							</td>
-							<td class="dato">
-								<div class="form-group">
-									<!-- Horario -->
-									<div class="controls">
-										<input type="date" id="horario" name="horario[]" placeholder="" class="form-control">
-									</div>
-								</div>
-							</td>
+							<td class="dato"> Leche Entera </td>
+							<td class="dato"> La Serenisima </td>
+							<td class="dato"> 1 Litro </td>
+							<td class="dato"> 25 </td>
+							<td class="dato"> 10/04/2019</td>
 						</tr>
 						<tr>
-							<td class="dato">
-								<input type="checkbox" name="id[]">
-							</td>
-							<td class="dato"> tipo Producto2 </td>
-							<td class="dato"> Marca 2 </td>
-							<td class="dato"> Peso 2 </td>
-							<td class="dato">
-								<div class="form-group">
-									<!-- Fecha -->
-									<div class="controls">
-										<input type="number" id="horario" name="fecha[]" placeholder="" class="form-control">
-									</div>
-								</div>
-							</td>
-							<td class="dato">
-								<div class="form-group">
-									<!-- Horario -->
-									<div class="controls">
-										<input type="date" id="horario" name="horario[]" placeholder="" class="form-control">
-									</div>
-								</div>
-							</td>
+							<td class="dato"> Arroz </td>
+							<td class="dato"> Ala </td>
+							<td class="dato"> 500 gramos </td>
+							<td class="dato"> 20</td>
+							<td class="dato"> 25/04/20119</td>
 						</tr>
 					</tbody>
 				</table>
@@ -157,5 +184,16 @@
 			<div class="col-md">Java y aplicaciones avanzadas 2019</div>
 		</footer>
 	</div>
+	<script type="text/javascript">
+		var map = L.map('map').
+		setView([-34.90348, -57.9376558], 15);
+		L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+			maxZoom: 19
+			}).addTo(map);
+		L.control.scale().addTo(map);
+	 	
+		L.marker([-34.90348, -57.9376558],{draggable: false}).addTo(map);
+	</script>
 </body>
 </html>
