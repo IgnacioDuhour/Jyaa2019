@@ -2,6 +2,12 @@ package model;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
+@DiscriminatorValue("Donor")
 public class Donor extends Role {
 
 	public String company;
@@ -9,6 +15,7 @@ public class Donor extends Role {
 	public int phone;
 	public String contactName;
 	public String time;
+	@OneToMany
 	public List<Donation> donations;
 
 	public Donor() {

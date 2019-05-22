@@ -1,13 +1,26 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity
 public class User {
 
-	String name;
-	String lastName;
-	String username;
-	String password;
-	String email;
-	Role role;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public long id;
+	public String name;
+	public String lastName;
+	public String username;
+	public String password;
+	public String email;
+	@OneToOne
+	@JoinColumn(name = "role_id", nullable = false)
+	public Role role;
 
 	public User() {
 		super();
@@ -21,6 +34,14 @@ public class User {
 		this.password = password;
 		this.email = email;
 		this.role = role;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {

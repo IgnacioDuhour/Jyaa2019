@@ -3,8 +3,18 @@ package model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Donation {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public long id;
 	public String sucursal;
 	public String address;
 	public String location;
@@ -13,9 +23,18 @@ public class Donation {
 	public boolean collected;
 	public Date collectDate;
 	public int collectNumber;
+	@OneToMany
 	public List<Item> items;
 
 	public Donation() {
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getSucursal() {
