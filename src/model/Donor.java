@@ -69,4 +69,7 @@ public class Donor extends Role {
 		this.donations = donations;
 	}
 
+	public void addDonation(Donation donation) {
+		this.donations.add(donation);
+	}
 }

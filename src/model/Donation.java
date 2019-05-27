@@ -109,4 +109,7 @@ public class Donation {
 		this.items = items;
 	}
 
+	public void addItem(Item item) {
+		this.items.add(item);
+	}
 }

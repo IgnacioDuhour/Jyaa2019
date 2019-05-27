@@ -6,6 +6,12 @@ import javax.persistence.PersistenceContext;
 
 import dao.GenericDao;
 
+/**
+ * 
+ * Implementacion Jpa Hibernate del Dao Generico
+ *
+ * @param <T>
+ */
 public class GenericDaoHibernateJpa<T> implements GenericDao<T> {
 
 	protected Class<T> persistentClass;
@@ -54,15 +60,27 @@ public class GenericDaoHibernateJpa<T> implements GenericDao<T> {
 
 	@Override
 	public void update(T entity) {
+		entityManager.merge(entity);
 	}
 
 	@Override
 	public void save(T entity) {
-		entityManager.persist(entity);
+		/*
+		EntityTransaction et = this.getEntityManager().getTransaction();
+		try {
+			et.begin();
+		*/	
+			entityManager.persist(entity);
+		/*
+			et.commit();
+		} catch (Exception e) {
+			et.rollback();
+		}
+		*/
 	}
 
 	@Override
-	public Object findById(long id) {
+	public T findById(long id) {
 		return entityManager.find(this.getPersistentClass(), id);
 	}
 

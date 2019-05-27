@@ -46,4 +46,7 @@ public class Route {
 		this.messages = messages;
 	}
 
+	public void addDonation(RouteDonation donation) {
+		this.donations.add(donation);
+	}
 }

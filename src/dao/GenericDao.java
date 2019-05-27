@@ -1,5 +1,11 @@
 package dao;
 
+/**
+ * 
+ * Interface de Dao Generico
+ *
+ * @param <T> parametro generico de la clase
+ */
 public interface GenericDao<T> {
 
 	public void remove(T entity);
@@ -8,5 +14,5 @@ public interface GenericDao<T> {
 
 	public void save(T entity);
 
-	public Object findById(long id);
+	public T findById(long id);
 }
