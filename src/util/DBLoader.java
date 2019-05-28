@@ -251,10 +251,12 @@ public class DBLoader {
 			routeDonation.setCollectDate(date);
 			routeDonation.setCollectTime("10:30");
 			routeDonation.setDonation(donation);
+			//routeDonationDao.save(routeDonation);
 
 			// Nuevo Recorrido
 			Route route = new Route();
 			route.addDonation(routeDonation);
+			//routeDao.save(route);
 
 			/*
 			 * System.out.println(role.getId() + " " +
