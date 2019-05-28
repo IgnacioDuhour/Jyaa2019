@@ -1,10 +1,15 @@
 package util;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import dao.DonationDao;
+import dao.ItemDao;
 import dao.ProductDao;
 import dao.RoleDao;
 import dao.TypeDao;
@@ -12,7 +17,9 @@ import dao.UserDao;
 import factories.FactoryDaos;
 import model.Admin;
 import model.BankUser;
+import model.Donation;
 import model.Donor;
+import model.Item;
 import model.Product;
 import model.Role;
 import model.Type;
@@ -34,10 +41,12 @@ public class DBLoader {
 
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction et = em.getTransaction();
-		UserDao userDao = FactoryDaos.getUserDao(em);
+		DonationDao donationDao = FactoryDaos.getDonationProductDao(em);
+		ItemDao itemDao = FactoryDaos.getItemDao(em);
+		ProductDao productDao = FactoryDaos.getProductDao(em);
 		RoleDao roleDao = FactoryDaos.getRoleDao(em);
 		TypeDao typeDao = FactoryDaos.getTypeDao(em);
-		ProductDao productDao = FactoryDaos.getProductDao(em);
+		UserDao userDao = FactoryDaos.getUserDao(em);
 
 		// TODO mejorar el manejo del entity manager para los dao y de las
 		// transacciones
@@ -70,6 +79,7 @@ public class DBLoader {
 			User user3 = new User("name3", "lastName3", "username3", "password3", "email3", role3);
 			roleDao.save(role3);
 			userDao.save(user3);
+
 			// Nuevos tipos y productos
 			Type type = new Type();
 			Product product = new Product();
@@ -82,129 +92,158 @@ public class DBLoader {
 			product.setType(type);
 			productDao.save(product);
 
-			product = new Product();
-			product.setBrand("Armonia");
-			product.setSize("1 litro");
-			product.setType(type);
-			productDao.save(product);
+			Product product2 = new Product();
+			product2.setBrand("Armonia");
+			product2.setSize("1 litro");
+			product2.setType(type);
+			productDao.save(product2);
 
-			product = new Product();
-			product.setBrand("Sancor");
-			product.setSize("1 Litro");
-			product.setType(type);
-			productDao.save(product);
+			Product product3 = new Product();
+			product3.setBrand("Sancor");
+			product3.setSize("1 Litro");
+			product3.setType(type);
+			productDao.save(product3);
 
-			type = new Type();
-			type.setName("Harina");
-			typeDao.save(type);
+			Type type2 = new Type();
+			type2.setName("Harina");
+			typeDao.save(type2);
 
-			product = new Product();
-			product.setBrand("Pureza");
-			product.setSize("1 Kilo");
-			product.setType(type);
-			productDao.save(product);
+			Product product4 = new Product();
+			product4.setBrand("Pureza");
+			product4.setSize("1 Kilo");
+			product4.setType(type2);
+			productDao.save(product4);
 
-			product = new Product();
-			product.setBrand("Cañuelas");
-			product.setSize("1 Kilo");
-			product.setType(type);
-			productDao.save(product);
+			Product product5 = new Product();
+			product5.setBrand("Cañuelas");
+			product5.setSize("1 Kilo");
+			product5.setType(type2);
+			productDao.save(product5);
 
-			type = new Type();
-			type.setName("Yerba");
-			typeDao.save(type);
+			Type type3 = new Type();
+			type3.setName("Yerba");
+			typeDao.save(type3);
 
-			product = new Product();
-			product.setBrand("Nobleza Gaucha");
-			product.setSize("1 Kilo");
-			product.setType(type);
-			productDao.save(product);
+			Product product6 = new Product();
+			product6.setBrand("Nobleza Gaucha");
+			product6.setSize("1 Kilo");
+			product6.setType(type3);
+			productDao.save(product6);
 
-			product = new Product();
-			product.setBrand("Nobleza Gaucha");
-			product.setSize("500 Gramos");
-			product.setType(type);
-			productDao.save(product);
+			Product product7 = new Product();
+			product7.setBrand("Nobleza Gaucha");
+			product7.setSize("500 Gramos");
+			product7.setType(type3);
+			productDao.save(product7);
 
-			product = new Product();
-			product.setBrand("Playadito");
-			product.setSize("1 Kilo");
-			product.setType(type);
-			productDao.save(product);
+			Product product8 = new Product();
+			product8.setBrand("Playadito");
+			product8.setSize("1 Kilo");
+			product8.setType(type3);
+			productDao.save(product8);
 
-			product = new Product();
-			product.setBrand("Playadito");
-			product.setSize("500 Gramos");
-			product.setType(type);
-			productDao.save(product);
+			Product product9 = new Product();
+			product9.setBrand("Playadito");
+			product9.setSize("500 Gramos");
+			product9.setType(type3);
+			productDao.save(product9);
 
-			type = new Type();
-			type.setName("Manteca");
-			typeDao.save(type);
+			Type type4 = new Type();
+			type4.setName("Manteca");
+			typeDao.save(type4);
 
-			product = new Product();
-			product.setBrand("La Serenisima");
-			product.setSize("100 Gramos");
-			product.setType(type);
-			productDao.save(product);
+			Product product10 = new Product();
+			product10.setBrand("La Serenisima");
+			product10.setSize("100 Gramos");
+			product10.setType(type4);
+			productDao.save(product10);
 
-			product = new Product();
-			product.setBrand("La Serenisima");
-			product.setSize("200 Gramos");
-			product.setType(type);
-			productDao.save(product);
+			Product product11 = new Product();
+			product11.setBrand("La Serenisima");
+			product11.setSize("200 Gramos");
+			product11.setType(type4);
+			productDao.save(product11);
 
-			product = new Product();
-			product.setBrand("Sancor");
-			product.setSize("100 Gramos");
-			product.setType(type);
-			productDao.save(product);
+			Product product12 = new Product();
+			product12.setBrand("Sancor");
+			product12.setSize("100 Gramos");
+			product12.setType(type4);
+			productDao.save(product12);
 
-			product = new Product();
-			product.setBrand("Sancor");
-			product.setSize("200 Gramos");
-			product.setType(type);
-			productDao.save(product);
+			Product product13 = new Product();
+			product13.setBrand("Sancor");
+			product13.setSize("200 Gramos");
+			product13.setType(type4);
+			productDao.save(product13);
 
-			type = new Type();
-			type.setName("Mermelada");
-			typeDao.save(type);
+			Type type5 = new Type();
+			type5.setName("Mermelada");
+			typeDao.save(type5);
 
-			product = new Product();
-			product.setBrand("Arcor");
-			product.setSize("500 Gramos");
-			product.setType(type);
-			productDao.save(product);
+			Product product14 = new Product();
+			product14.setBrand("Arcor");
+			product14.setSize("500 Gramos");
+			product14.setType(type5);
+			productDao.save(product14);
 
-			product = new Product();
-			product.setBrand("La Campañola");
-			product.setSize("500 Gramos");
-			product.setType(type);
-			productDao.save(product);
+			Product product15 = new Product();
+			product15.setBrand("La Campañola");
+			product15.setSize("500 Gramos");
+			product15.setType(type5);
+			productDao.save(product15);
 
-			type = new Type();
-			type.setName("Tomates");
-			typeDao.save(type);
+			Type type6 = new Type();
+			type6.setName("Tomates");
+			typeDao.save(type6);
 
-			product = new Product();
-			product.setBrand("Arcor");
-			product.setSize("400 Gramos");
-			product.setType(type);
-			productDao.save(product);
+			Product product16 = new Product();
+			product16.setBrand("Arcor");
+			product16.setSize("400 Gramos");
+			product16.setType(type6);
+			productDao.save(product16);
 
-			product = new Product();
-			product.setBrand("Marolio");
-			product.setSize("400 Gramos");
-			product.setType(type);
-			productDao.save(product);
+			Product product17 = new Product();
+			product17.setBrand("Marolio");
+			product17.setSize("400 Gramos");
+			product17.setType(type6);
+			productDao.save(product17);
 
-			product = new Product();
-			product.setBrand("La Campañola");
-			product.setSize("400 Gramos");
-			product.setType(type);
-			productDao.save(product);
+			Product product18 = new Product();
+			product18.setBrand("La Campañola");
+			product18.setSize("400 Gramos");
+			product18.setType(type6);
+			productDao.save(product18);
 
 			// Nuevas donaciones
+			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+			Date date = format.parse("20/08/2019");
+			Donation donation = new Donation("sucursal", "address", "location", date, "availableTime", false, date, 0);
+
+			Item item = new Item();
+			item.setExpiration(date);
+			item.setProduct(product);
+			item.setQuantity(25);
+			itemDao.save(item);
+
+			donation.addItem(item);
+
+			item = new Item();
+			item.setExpiration(date);
+			item.setProduct(product5);
+			item.setQuantity(25);
+			itemDao.save(item);
+
+			donation.addItem(item);
+
+			item = new Item();
+			item.setExpiration(date);
+			item.setProduct(product14);
+			item.setQuantity(25);
+			itemDao.save(item);
+
+			donation.addItem(item);
+			donationDao.save(donation);
+
 			// Nueva donacion a retirar
 			// Nuevo Recorrido
 			/*

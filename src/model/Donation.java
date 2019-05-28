@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +28,20 @@ public class Donation {
 	public List<Item> items;
 
 	public Donation() {
+	}
+
+	public Donation(String sucursal, String address, String location, Date availableDate, String availableTime,
+			boolean collected, Date collectDate, int collectNumber) {
+		super();
+		this.sucursal = sucursal;
+		this.address = address;
+		this.location = location;
+		this.availableDate = availableDate;
+		this.availableTime = availableTime;
+		this.collected = collected;
+		this.collectDate = collectDate;
+		this.collectNumber = collectNumber;
+		this.items = new ArrayList<>();
 	}
 
 	public long getId() {
