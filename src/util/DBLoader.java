@@ -22,6 +22,8 @@ import model.Donor;
 import model.Item;
 import model.Product;
 import model.Role;
+import model.Route;
+import model.RouteDonation;
 import model.Type;
 import model.User;
 
@@ -245,7 +247,15 @@ public class DBLoader {
 			donationDao.save(donation);
 
 			// Nueva donacion a retirar
+			RouteDonation routeDonation = new RouteDonation();
+			routeDonation.setCollectDate(date);
+			routeDonation.setCollectTime("10:30");
+			routeDonation.setDonation(donation);
+
 			// Nuevo Recorrido
+			Route route = new Route();
+			route.addDonation(routeDonation);
+
 			/*
 			 * System.out.println(role.getId() + " " +
 			 * role.getClass().getSimpleName()); System.out.println(user.getId()

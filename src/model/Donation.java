@@ -41,7 +41,7 @@ public class Donation {
 		this.collected = collected;
 		this.collectDate = collectDate;
 		this.collectNumber = collectNumber;
-		this.items = new ArrayList<>();
+		this.items = new ArrayList<Item>();
 	}
 
 	public long getId() {

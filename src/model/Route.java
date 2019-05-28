@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -20,6 +21,8 @@ public class Route {
 	public List<Message> messages;
 
 	public Route() {
+		this.donations = new ArrayList<RouteDonation>();
+		this.messages = new ArrayList<Message>();
 	}
 
 	public long getId() {
