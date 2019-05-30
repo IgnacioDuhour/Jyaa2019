@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
@@ -19,6 +20,7 @@ public class Donor extends Role {
 	public List<Donation> donations;
 
 	public Donor() {
+		this.donations = new ArrayList<Donation>();
 	}
 
 	public String getCompany() {

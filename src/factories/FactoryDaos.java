@@ -29,7 +29,7 @@ public class FactoryDaos {
 		return new DonationDaoHibernateJpa();
 	}
 
-	static public DonationDao getDonationProductDao(EntityManager em) {
+	static public DonationDao getDonationDao(EntityManager em) {
 		return new DonationDaoHibernateJpa(em);
 	}
 

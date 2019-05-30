@@ -28,6 +28,7 @@ public class Donation {
 	public List<Item> items;
 
 	public Donation() {
+		this.items = new ArrayList<Item>();
 	}
 
 	public Donation(String sucursal, String address, String location, Date availableDate, String availableTime,

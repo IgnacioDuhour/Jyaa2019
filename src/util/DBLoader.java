@@ -20,6 +20,7 @@ import model.BankUser;
 import model.Donation;
 import model.Donor;
 import model.Item;
+import model.Message;
 import model.Product;
 import model.Role;
 import model.Route;
@@ -43,7 +44,7 @@ public class DBLoader {
 
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction et = em.getTransaction();
-		DonationDao donationDao = FactoryDaos.getDonationProductDao(em);
+		DonationDao donationDao = FactoryDaos.getDonationDao(em);
 		ItemDao itemDao = FactoryDaos.getItemDao(em);
 		ProductDao productDao = FactoryDaos.getProductDao(em);
 		RoleDao roleDao = FactoryDaos.getRoleDao(em);
@@ -59,13 +60,14 @@ public class DBLoader {
 			System.out.println();
 			System.out.println("------------------------ INSERCIONES ------------------------");
 			System.out.println();
+
 			// Nuevo administrador
 			Role role = new Admin();
 			roleDao.save(role);
 			User user = new User("name", "lastName", "username", "password", "email", role);
 			userDao.save(user);
 
-			// Nuevo usuraio del banco
+			// Nuevo usuario del banco
 			Role role2 = new BankUser();
 			roleDao.save(role2);
 			User user2 = new User("name2", "lastName2", "username2", "password2", "email2", role2);
@@ -246,17 +248,65 @@ public class DBLoader {
 			donation.addItem(item);
 			donationDao.save(donation);
 
+			role3.addDonation(donation);
+			roleDao.update(role3);
+
+			Donation donation2 = new Donation("sucursal2", "address2", "location2", date, "availableTime", false, date, 0);
+
+			item = new Item();
+			item.setExpiration(date);
+			item.setProduct(product3);
+			item.setQuantity(25);
+			itemDao.save(item);
+
+			donation2.addItem(item);
+
+			item = new Item();
+			item.setExpiration(date);
+			item.setProduct(product8);
+			item.setQuantity(25);
+			itemDao.save(item);
+
+			donation2.addItem(item);
+
+			item = new Item();
+			item.setExpiration(date);
+			item.setProduct(product18);
+			item.setQuantity(25);
+			itemDao.save(item);
+
+			donation2.addItem(item);
+			donationDao.save(donation2);
+
+			role3.addDonation(donation2);
+			roleDao.update(role3);
+
 			// Nueva donacion a retirar
 			RouteDonation routeDonation = new RouteDonation();
 			routeDonation.setCollectDate(date);
 			routeDonation.setCollectTime("10:30");
 			routeDonation.setDonation(donation);
-			//routeDonationDao.save(routeDonation);
+			// routeDonationDao.save(routeDonation);
+
+			RouteDonation routeDonation2 = new RouteDonation();
+			routeDonation2.setCollectDate(date);
+			routeDonation2.setCollectTime("10:30");
+			routeDonation2.setDonation(donation2);
+			// routeDonationDao.save(routeDonation);
 
 			// Nuevo Recorrido
 			Route route = new Route();
 			route.addDonation(routeDonation);
-			//routeDao.save(route);
+			route.addDonation(routeDonation2);
+			// routeDao.save(route);
+
+			// Nuevo mensaje
+			Message message = new Message();
+			message.setText("");
+			message.setDate(date);
+			message.setTime("");
+			message.setAuthor(user3);
+			// messageDao.save(message);
 
 			/*
 			 * System.out.println(role.getId() + " " +
@@ -268,9 +318,6 @@ public class DBLoader {
 			 * System.out.println(user3.getId() + " " + user3.getName());
 			 */
 
-			/*
-			 * em.persist(role2); em.persist(user2);
-			 */
 			et.commit();
 
 			System.out.println();
