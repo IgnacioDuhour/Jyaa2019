@@ -1,6 +1,7 @@
 package util;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.EntityManager;
@@ -8,10 +9,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import dao.AdminDao;
+import dao.BankUserDao;
 import dao.DonationDao;
+import dao.DonorDao;
 import dao.ItemDao;
 import dao.ProductDao;
-import dao.RoleDao;
 import dao.TypeDao;
 import dao.UserDao;
 import factories.FactoryDaos;
@@ -22,7 +25,6 @@ import model.Donor;
 import model.Item;
 import model.Message;
 import model.Product;
-import model.Role;
 import model.Route;
 import model.RouteDonation;
 import model.Type;
@@ -47,12 +49,13 @@ public class DBLoader {
 		DonationDao donationDao = FactoryDaos.getDonationDao(em);
 		ItemDao itemDao = FactoryDaos.getItemDao(em);
 		ProductDao productDao = FactoryDaos.getProductDao(em);
-		RoleDao roleDao = FactoryDaos.getRoleDao(em);
+		AdminDao adminDao = FactoryDaos.getAdminDao(em);
+		BankUserDao bankUserDao = FactoryDaos.getBankUserDao(em);
+		DonorDao donorDao = FactoryDaos.getDonorDao(em);
 		TypeDao typeDao = FactoryDaos.getTypeDao(em);
 		UserDao userDao = FactoryDaos.getUserDao(em);
 
-		// TODO mejorar el manejo del entity manager para los dao y de las
-		// transacciones
+		// TODO mejorar el manejo del entity manager para los dao
 
 		try {
 			et.begin();
@@ -62,14 +65,14 @@ public class DBLoader {
 			System.out.println();
 
 			// Nuevo administrador
-			Role role = new Admin();
-			roleDao.save(role);
+			Admin role = new Admin();
+			adminDao.save(role);
 			User user = new User("name", "lastName", "username", "password", "email", role);
 			userDao.save(user);
 
 			// Nuevo usuario del banco
-			Role role2 = new BankUser();
-			roleDao.save(role2);
+			BankUser role2 = new BankUser();
+			bankUserDao.save(role2);
 			User user2 = new User("name2", "lastName2", "username2", "password2", "email2", role2);
 			userDao.save(user2);
 
@@ -81,7 +84,7 @@ public class DBLoader {
 			role3.setContactName("contactName");
 			role3.setTime("time");
 			User user3 = new User("name3", "lastName3", "username3", "password3", "email3", role3);
-			roleDao.save(role3);
+			donorDao.save(role3);
 			userDao.save(user3);
 
 			// Nuevos tipos y productos
@@ -249,9 +252,10 @@ public class DBLoader {
 			donationDao.save(donation);
 
 			role3.addDonation(donation);
-			roleDao.update(role3);
+			donorDao.update(role3);
 
-			Donation donation2 = new Donation("sucursal2", "address2", "location2", date, "availableTime", false, date, 0);
+			Donation donation2 = new Donation("sucursal2", "address2", "location2", date, "availableTime", false, date,
+					0);
 
 			item = new Item();
 			item.setExpiration(date);
@@ -279,7 +283,7 @@ public class DBLoader {
 			donationDao.save(donation2);
 
 			role3.addDonation(donation2);
-			roleDao.update(role3);
+			donorDao.update(role3);
 
 			// Nueva donacion a retirar
 			RouteDonation routeDonation = new RouteDonation();
@@ -326,6 +330,18 @@ public class DBLoader {
 			user3 = userDao.findById(1);
 			System.out.println(user3.getRole().getId() + " " + user3.getRole().getClass().getSimpleName());
 			System.out.println(user3.getId() + " " + user3.getName());
+
+			// System.out.println("------------------------ Donaciones de un
+			// recorrido ------------------------");
+
+			System.out.println("------------------------ Items ------------------------");
+			ArrayList<Item> itemList = (ArrayList<Item>) itemDao.getItems(2);
+
+			for (Item item2 : itemList) {
+				System.out.println(item2.getProduct().getType().getName());
+				System.out.println(item2.getProduct().getBrand());
+				System.out.println(item2.getQuantity());
+			}
 
 			em.close();
 			System.out.println();

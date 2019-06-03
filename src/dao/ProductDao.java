@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import model.Product;
 
 /**
@@ -8,5 +10,12 @@ import model.Product;
  *
  */
 public interface ProductDao extends GenericDao<Product> {
+
+	/**
+	 * Listado de productos
+	 * 
+	 * @return listado de productos
+	 */
+	List<Product> getProducts();
 
 }

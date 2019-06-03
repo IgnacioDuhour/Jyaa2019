@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -18,6 +19,7 @@ public class Route {
 	@OneToMany
 	public List<RouteDonation> donations;
 	@OneToMany
+	@JoinColumn(name = "route_id")
 	public List<Message> messages;
 
 	public Route() {

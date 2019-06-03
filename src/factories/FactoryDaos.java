@@ -2,16 +2,20 @@ package factories;
 
 import javax.persistence.EntityManager;
 
+import dao.AdminDao;
+import dao.BankUserDao;
 import dao.DonationDao;
+import dao.DonorDao;
 import dao.ItemDao;
 import dao.ProductDao;
-import dao.RoleDao;
 import dao.TypeDao;
 import dao.UserDao;
+import dao.impl.AdminDaoHibernateJpa;
+import dao.impl.BankUserDaoHibernateJpa;
 import dao.impl.DonationDaoHibernateJpa;
+import dao.impl.DonorDaoHibernateJpa;
 import dao.impl.ItemDaoHibernateJpa;
 import dao.impl.ProductDaoHibernateJpa;
-import dao.impl.RoleDaoHibernateJpa;
 import dao.impl.TypeDaoHibernateJpa;
 import dao.impl.UserDaoHibernateJpa;
 
@@ -41,12 +45,28 @@ public class FactoryDaos {
 		return new ItemDaoHibernateJpa(em);
 	}
 
-	static public RoleDao getRoleDao() {
-		return new RoleDaoHibernateJpa();
+	static public AdminDao getAdminDao() {
+		return new AdminDaoHibernateJpa();
 	}
 
-	static public RoleDao getRoleDao(EntityManager em) {
-		return new RoleDaoHibernateJpa(em);
+	static public AdminDao getAdminDao(EntityManager em) {
+		return new AdminDaoHibernateJpa(em);
+	}
+
+	static public BankUserDao getBankUserDao() {
+		return new BankUserDaoHibernateJpa();
+	}
+
+	static public BankUserDao getBankUserDao(EntityManager em) {
+		return new BankUserDaoHibernateJpa(em);
+	}
+
+	static public DonorDao getDonorDao() {
+		return new DonorDaoHibernateJpa();
+	}
+
+	static public DonorDao getDonorDao(EntityManager em) {
+		return new DonorDaoHibernateJpa(em);
 	}
 
 	static public TypeDao getTypeDao() {
@@ -64,6 +84,5 @@ public class FactoryDaos {
 	static public ProductDao getProductDao(EntityManager em) {
 		return new ProductDaoHibernateJpa(em);
 	}
-
 
 }

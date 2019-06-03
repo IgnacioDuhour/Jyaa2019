@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import dao.RouteDao;
-import model.Donation;
 import model.Route;
 
 /**
@@ -26,11 +25,8 @@ public class RouteDaoHibernateJpa extends GenericDaoHibernateJpa<Route> implemen
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Donation> getDonations(long idRoute) {
-		// paginacion
-		// .setFirstResult(page * size).setMaxResults(size)
-		List<Donation> donations = this.entityManager.createQuery("SELECT d FROM Donation d").getResultList();
-		return donations;
+	public List<Route> getRoutes() {
+		return this.entityManager.createQuery("SELECT r FROM Route r").getResultList();
 	}
 
 }

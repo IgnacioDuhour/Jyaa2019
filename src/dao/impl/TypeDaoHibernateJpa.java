@@ -1,5 +1,7 @@
 package dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import dao.TypeDao;
@@ -19,5 +21,11 @@ public class TypeDaoHibernateJpa extends GenericDaoHibernateJpa<Type> implements
 	public TypeDaoHibernateJpa(EntityManager em) {
 		super(Type.class);
 		this.setEntityManager(em);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Type> getTypes() {
+		return this.entityManager.createQuery("SELECT t FROM Type t").getResultList();
 	}
 }

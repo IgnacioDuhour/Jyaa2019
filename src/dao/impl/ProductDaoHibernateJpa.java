@@ -1,5 +1,7 @@
 package dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import dao.ProductDao;
@@ -19,5 +21,11 @@ public class ProductDaoHibernateJpa extends GenericDaoHibernateJpa<Product> impl
 	public ProductDaoHibernateJpa(EntityManager em) {
 		super(Product.class);
 		this.setEntityManager(em);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Product> getProducts() {
+		return this.entityManager.createQuery("SELECT p FROM Product p").getResultList();
 	}
 }

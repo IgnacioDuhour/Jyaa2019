@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -17,6 +18,7 @@ public class Donor extends Role {
 	public String contactName;
 	public String time;
 	@OneToMany
+	@JoinColumn(name = "donor_id")
 	public List<Donation> donations;
 
 	public Donor() {

@@ -65,18 +65,7 @@ public class GenericDaoHibernateJpa<T> implements GenericDao<T> {
 
 	@Override
 	public void save(T entity) {
-		/*
-		EntityTransaction et = this.getEntityManager().getTransaction();
-		try {
-			et.begin();
-		*/	
-			entityManager.persist(entity);
-		/*
-			et.commit();
-		} catch (Exception e) {
-			et.rollback();
-		}
-		*/
+		entityManager.persist(entity);
 	}
 
 	@Override

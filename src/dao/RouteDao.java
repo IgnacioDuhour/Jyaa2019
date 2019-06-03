@@ -2,7 +2,6 @@ package dao;
 
 import java.util.List;
 
-import model.Donation;
 import model.Route;
 
 /**
@@ -13,11 +12,9 @@ import model.Route;
 public interface RouteDao extends GenericDao<Route> {
 
 	/**
-	 * Listado de las donaciones de un recorrido
+	 * Listado de recorridos
 	 * 
-	 * @param idRoute
-	 *            identificador del recorrido
-	 * @return listado de donaciones para el recorrido
+	 * @return listado de recorridos
 	 */
-	public List<Donation> getDonations(long idRoute);
+	public List<Route> getRoutes();
 }
