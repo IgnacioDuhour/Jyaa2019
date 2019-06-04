@@ -10,14 +10,17 @@ import dao.ItemDao;
 import dao.ProductDao;
 import dao.TypeDao;
 import dao.UserDao;
+import dao.RouteDao;
 import dao.impl.AdminDaoHibernateJpa;
 import dao.impl.BankUserDaoHibernateJpa;
 import dao.impl.DonationDaoHibernateJpa;
 import dao.impl.DonorDaoHibernateJpa;
 import dao.impl.ItemDaoHibernateJpa;
 import dao.impl.ProductDaoHibernateJpa;
+import dao.impl.RouteDaoHibernateJpa;
 import dao.impl.TypeDaoHibernateJpa;
 import dao.impl.UserDaoHibernateJpa;
+import dao.impl.RouteDaoHibernateJpa;
 
 public class FactoryDaos {
 
@@ -85,4 +88,19 @@ public class FactoryDaos {
 		return new ProductDaoHibernateJpa(em);
 	}
 
+	static public RouteDao getRouteDao() {
+		return new RouteDaoHibernateJpa();
+	}
+
+	static public RouteDao getRouteDao(EntityManager em) {
+		return new RouteDaoHibernateJpa(em);
+	}
+	
+/*	static public RouteDao getRouteDonationDao() {
+		return new RouteDonationDaoHibernateJpa();
+	}
+
+	static public RouteDao getRouteDonationDao(EntityManager em) {
+		return new RouteDonationDaoHibernateJpa(em);
+	}*/
 }

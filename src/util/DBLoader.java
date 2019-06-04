@@ -17,6 +17,7 @@ import dao.ItemDao;
 import dao.ProductDao;
 import dao.TypeDao;
 import dao.UserDao;
+import dao.RouteDao;
 import factories.FactoryDaos;
 import model.Admin;
 import model.BankUser;
@@ -54,6 +55,10 @@ public class DBLoader {
 		DonorDao donorDao = FactoryDaos.getDonorDao(em);
 		TypeDao typeDao = FactoryDaos.getTypeDao(em);
 		UserDao userDao = FactoryDaos.getUserDao(em);
+		//JJ
+		//RouteDao routeDonationDao = FactoryDaos.getRouteDao(em);
+		RouteDonationDao routeDonationDao = FactoryDaos.getRouteDonationDao(em)
+		//JJ
 
 		// TODO mejorar el manejo del entity manager para los dao
 
@@ -290,7 +295,8 @@ public class DBLoader {
 			routeDonation.setCollectDate(date);
 			routeDonation.setCollectTime("10:30");
 			routeDonation.setDonation(donation);
-			// routeDonationDao.save(routeDonation);
+			//JJ
+			routeDonationDao.save(routeDonation);
 
 			RouteDonation routeDonation2 = new RouteDonation();
 			routeDonation2.setCollectDate(date);
@@ -310,6 +316,7 @@ public class DBLoader {
 			message.setDate(date);
 			message.setTime("");
 			message.setAuthor(user3);
+			
 			// messageDao.save(message);
 
 			/*
