@@ -17,6 +17,7 @@ public class Route {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long id;
 	@OneToMany
+	@JoinColumn(name = "route_id")
 	public List<RouteDonation> donations;
 	@OneToMany
 	@JoinColumn(name = "route_id")
@@ -53,5 +54,9 @@ public class Route {
 
 	public void addDonation(RouteDonation donation) {
 		this.donations.add(donation);
+	}
+
+	public void addMessage(Message message) {
+		this.messages.add(message);
 	}
 }

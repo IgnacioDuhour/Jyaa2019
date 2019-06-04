@@ -15,9 +15,10 @@ import dao.DonationDao;
 import dao.DonorDao;
 import dao.ItemDao;
 import dao.ProductDao;
+import dao.RouteDao;
+import dao.RouteDonationDao;
 import dao.TypeDao;
 import dao.UserDao;
-import dao.RouteDao;
 import factories.FactoryDaos;
 import model.Admin;
 import model.BankUser;
@@ -47,18 +48,17 @@ public class DBLoader {
 
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction et = em.getTransaction();
-		DonationDao donationDao = FactoryDaos.getDonationDao(em);
-		ItemDao itemDao = FactoryDaos.getItemDao(em);
-		ProductDao productDao = FactoryDaos.getProductDao(em);
+
 		AdminDao adminDao = FactoryDaos.getAdminDao(em);
 		BankUserDao bankUserDao = FactoryDaos.getBankUserDao(em);
+		DonationDao donationDao = FactoryDaos.getDonationDao(em);
 		DonorDao donorDao = FactoryDaos.getDonorDao(em);
+		ItemDao itemDao = FactoryDaos.getItemDao(em);
+		ProductDao productDao = FactoryDaos.getProductDao(em);
+		RouteDao routeDao = FactoryDaos.getRouteDao(em);
+		RouteDonationDao routeDonationDao = FactoryDaos.getRouteDonationDao(em);
 		TypeDao typeDao = FactoryDaos.getTypeDao(em);
 		UserDao userDao = FactoryDaos.getUserDao(em);
-		//JJ
-		//RouteDao routeDonationDao = FactoryDaos.getRouteDao(em);
-		RouteDonationDao routeDonationDao = FactoryDaos.getRouteDonationDao(em)
-		//JJ
 
 		// TODO mejorar el manejo del entity manager para los dao
 
@@ -290,25 +290,29 @@ public class DBLoader {
 			role3.addDonation(donation2);
 			donorDao.update(role3);
 
+			// Nuevo Recorrido
+			Route route = new Route();
+			routeDao.save(route); // esto va antes de guardar la donacion de
+									// recorrido porque es necesario que route
+									// tenga el id
+
 			// Nueva donacion a retirar
 			RouteDonation routeDonation = new RouteDonation();
 			routeDonation.setCollectDate(date);
 			routeDonation.setCollectTime("10:30");
 			routeDonation.setDonation(donation);
-			//JJ
+			// JJ
 			routeDonationDao.save(routeDonation);
 
 			RouteDonation routeDonation2 = new RouteDonation();
 			routeDonation2.setCollectDate(date);
 			routeDonation2.setCollectTime("10:30");
 			routeDonation2.setDonation(donation2);
-			// routeDonationDao.save(routeDonation);
+			routeDonationDao.save(routeDonation2);
 
-			// Nuevo Recorrido
-			Route route = new Route();
 			route.addDonation(routeDonation);
 			route.addDonation(routeDonation2);
-			// routeDao.save(route);
+			routeDao.update(route);
 
 			// Nuevo mensaje
 			Message message = new Message();
@@ -316,19 +320,13 @@ public class DBLoader {
 			message.setDate(date);
 			message.setTime("");
 			message.setAuthor(user3);
-			
+
 			// messageDao.save(message);
 
 			/*
-			 * System.out.println(role.getId() + " " +
-			 * role.getClass().getSimpleName()); System.out.println(user.getId()
-			 * + " " + user.getName());
-			 * 
-			 * System.out.println(role3.getId() + " " +
-			 * role3.getClass().getSimpleName());
-			 * System.out.println(user3.getId() + " " + user3.getName());
+			 * esto es para descomentar despues de hacer el MessageDao
+			 * route.addMessage(message); routeDao.update(route);
 			 */
-
 			et.commit();
 
 			System.out.println();
@@ -338,8 +336,13 @@ public class DBLoader {
 			System.out.println(user3.getRole().getId() + " " + user3.getRole().getClass().getSimpleName());
 			System.out.println(user3.getId() + " " + user3.getName());
 
-			// System.out.println("------------------------ Donaciones de un
-			// recorrido ------------------------");
+			System.out.println("------------------------ Donaciones de un recorrido ------------------------");
+			ArrayList<RouteDonation> donations = (ArrayList<RouteDonation>) routeDonationDao.getRouteDonations(1);
+			for (RouteDonation routeDonation3 : donations) {
+				System.out.println(routeDonation3.getId());
+				System.out.println(routeDonation3.getDonation().getAddress());
+				System.out.println(routeDonation3.getCollectDate());
+			}
 
 			System.out.println("------------------------ Items ------------------------");
 			ArrayList<Item> itemList = (ArrayList<Item>) itemDao.getItems(2);
