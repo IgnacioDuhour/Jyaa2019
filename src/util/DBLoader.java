@@ -72,23 +72,23 @@ public class DBLoader {
 			// Nuevo administrador
 			Admin role = new Admin();
 			adminDao.save(role);
-			User user = new User("name", "lastName", "username", "password", "email", role);
+			User user = new User("Juan", "Perez", "jperez", "jperez1234", "jperez@mail.com", role);
 			userDao.save(user);
 
 			// Nuevo usuario del banco
 			BankUser role2 = new BankUser();
 			bankUserDao.save(role2);
-			User user2 = new User("name2", "lastName2", "username2", "password2", "email2", role2);
+			User user2 = new User("Roberto", "Dominguez", "rdominguez", "rdoming1234", "rdominguez@mail.com", role2);
 			userDao.save(user2);
 
 			// Nuevo donante
 			Donor role3 = new Donor();
-			role3.setCompany("company");
-			role3.setAddress("address");
+			role3.setCompany("Disco");
+			role3.setAddress("calle falsa nro 123");
 			role3.setPhone(221354789);
-			role3.setContactName("contactName");
+			role3.setContactName("Juan Carlos");
 			role3.setTime("time");
-			User user3 = new User("name3", "lastName3", "username3", "password3", "email3", role3);
+			User user3 = new User("Juan Carlos", "Fernandez", "jcfernandez", "jcfernandez123", "jcfernandez@mail.com", role3);
 			donorDao.save(role3);
 			userDao.save(user3);
 
