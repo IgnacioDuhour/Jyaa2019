@@ -12,6 +12,7 @@ import dao.RouteDao;
 import dao.RouteDonationDao;
 import dao.TypeDao;
 import dao.UserDao;
+import dao.MessageDao;
 import dao.impl.AdminDaoHibernateJpa;
 import dao.impl.BankUserDaoHibernateJpa;
 import dao.impl.DonationDaoHibernateJpa;
@@ -22,6 +23,7 @@ import dao.impl.RouteDaoHibernateJpa;
 import dao.impl.RouteDonationDaoHibernateJpa;
 import dao.impl.TypeDaoHibernateJpa;
 import dao.impl.UserDaoHibernateJpa;
+import dao.impl.MessageDaoHibernateJpa;
 
 public class FactoryDaos {
 
@@ -103,5 +105,13 @@ public class FactoryDaos {
 
 	static public RouteDonationDao getRouteDonationDao(EntityManager em) {
 		return new RouteDonationDaoHibernateJpa(em);
+	}
+	
+	static public MessageDao getMessageDao() {
+		return new MessageDaoHibernateJpa();
+	}
+
+	static public MessageDao getMessageDao(EntityManager em) {
+		return new MessageDaoHibernateJpa(em);
 	}
 }

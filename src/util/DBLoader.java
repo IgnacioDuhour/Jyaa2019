@@ -19,6 +19,7 @@ import dao.RouteDao;
 import dao.RouteDonationDao;
 import dao.TypeDao;
 import dao.UserDao;
+import dao.MessageDao;
 import factories.FactoryDaos;
 import model.Admin;
 import model.BankUser;
@@ -59,6 +60,7 @@ public class DBLoader {
 		RouteDonationDao routeDonationDao = FactoryDaos.getRouteDonationDao(em);
 		TypeDao typeDao = FactoryDaos.getTypeDao(em);
 		UserDao userDao = FactoryDaos.getUserDao(em);
+		MessageDao messageDao = FactoryDaos.getMessageDao(em);
 
 		// TODO mejorar el manejo del entity manager para los dao
 
@@ -320,8 +322,7 @@ public class DBLoader {
 			message.setDate(date);
 			message.setTime("");
 			message.setAuthor(user3);
-
-			// messageDao.save(message);
+			messageDao.save(message);
 
 			/*
 			 * esto es para descomentar despues de hacer el MessageDao
