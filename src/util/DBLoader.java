@@ -90,7 +90,8 @@ public class DBLoader {
 			role3.setPhone(221354789);
 			role3.setContactName("Juan Carlos");
 			role3.setTime("time");
-			User user3 = new User("Juan Carlos", "Fernandez", "jcfernandez", "jcfernandez123", "jcfernandez@mail.com", role3);
+			User user3 = new User("Juan Carlos", "Fernandez", "jcfernandez", "jcfernandez123", "jcfernandez@mail.com",
+					role3);
 			donorDao.save(role3);
 			userDao.save(user3);
 
@@ -318,7 +319,7 @@ public class DBLoader {
 
 			// Nuevo mensaje
 			Message message = new Message();
-			message.setText("");
+			message.setText("Este es un mensaje en el foro");
 			message.setDate(date);
 			message.setTime("");
 			message.setAuthor(user3);
@@ -326,8 +327,10 @@ public class DBLoader {
 
 			/*
 			 * esto es para descomentar despues de hacer el MessageDao
-			 * route.addMessage(message); routeDao.update(route);
 			 */
+			route.addMessage(message);
+			routeDao.update(route);
+
 			et.commit();
 
 			System.out.println();
@@ -343,6 +346,14 @@ public class DBLoader {
 				System.out.println(routeDonation3.getId());
 				System.out.println(routeDonation3.getDonation().getAddress());
 				System.out.println(routeDonation3.getCollectDate());
+			}
+
+			System.out.println("------------------------ Mensajes de un recorrido ------------------------");
+			ArrayList<Message> messages = (ArrayList<Message>) messageDao.getAllMessages(1);
+			for (Message message2 : messages) {
+				System.out.println(message2.getId());
+				System.out.println(message2.getText());
+				System.out.println(message2.getAuthor().getName());
 			}
 
 			System.out.println("------------------------ Items ------------------------");

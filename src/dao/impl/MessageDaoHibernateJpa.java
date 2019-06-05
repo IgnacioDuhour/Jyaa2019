@@ -24,16 +24,12 @@ public class MessageDaoHibernateJpa extends GenericDaoHibernateJpa<Message> impl
 		this.setEntityManager(em);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Message> getAllMessages(long idRoute) {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = this.entityManager.createQuery("SELECT m FROM Route r Join r.messages m WHERE r.id = :route");
+		q.setParameter("route", idRoute);
+		return q.getResultList();
 	}
-
-	/*@SuppressWarnings("unchecked")
-	@Override
-	public List<User> getUsers(int page, int size) {
-		return this.entityManager.createQuery("SELECT u FROM User u").setFirstResult(page * size).setMaxResults(size).getResultList();
-	}*/
 
 }
