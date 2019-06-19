@@ -21,4 +21,5 @@ public interface UserDao extends GenericDao<User> {
 	 * @return listado de usuarios
 	 */
 	public List<User> getUsers(int page, int size);
+
 }

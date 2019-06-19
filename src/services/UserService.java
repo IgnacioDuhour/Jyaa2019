@@ -15,4 +15,8 @@ public interface UserService {
 	public User updateUser(User user);
 
 	public User deletUser(long id);
+
+	public List<User> getBankUsers(int page, int size);
+
+	public List<User> getDonorUsers(int page, int size);
 }

@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @DiscriminatorValue("Donor")
 public class Donor extends Role {
@@ -19,6 +21,7 @@ public class Donor extends Role {
 	public String time;
 	@OneToMany
 	@JoinColumn(name = "donor_id")
+	@JsonIgnore
 	public List<Donation> donations;
 
 	public Donor() {
@@ -65,6 +68,7 @@ public class Donor extends Role {
 		this.time = time;
 	}
 
+	@JsonIgnore
 	public List<Donation> getDonations() {
 		return donations;
 	}

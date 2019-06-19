@@ -19,7 +19,6 @@ import model.User;
 import services.UserService;
 import services.impl.UserServiceImpl;
 
-
 /**
  * 
  * Controlador rest de usuarios
@@ -28,6 +27,7 @@ import services.impl.UserServiceImpl;
 @Path("/Users")
 public class UserController {
 	UserService userService = new UserServiceImpl();
+	private String mensaje;
 
 	public UserController() {
 	}
@@ -48,6 +48,22 @@ public class UserController {
 		return userService.getUsers(page, size);
 	}
 
+	@GET
+	@Path("bankUser")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<User> getUsersByType(@DefaultValue("0") @QueryParam("page") int page,
+			@DefaultValue("10") @QueryParam("size") int size) {
+		return userService.getBankUsers(page, size);
+	}
+
+	@GET
+	@Path("donorUser")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<User> getDonorUsers(@DefaultValue("0") @QueryParam("page") int page,
+			@DefaultValue("10") @QueryParam("size") int size) {
+		return userService.getDonorUsers(page, size);
+	}
+
 	/**
 	 * Recuperar un usuario a partir de un id
 	 * 
@@ -58,8 +74,14 @@ public class UserController {
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public User getUser(@PathParam("id") long id) {
-		return userService.getUser(id);
+	public Response getUser(@PathParam("id") long id) {
+		User usr = userService.getUser(id);
+		if (usr.deleted) {
+			mensaje = "No se encontró el usuario";
+			return Response.status(Response.Status.NOT_FOUND).entity(mensaje).build();
+		} else {
+			return Response.ok().entity(usr).build();
+		}
 	}
 
 	/**

@@ -7,7 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Entity
@@ -19,6 +21,9 @@ public abstract class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long id;
+	@OneToOne(mappedBy = "role")
+	@JsonIgnore
+	private User owner;
 
 	public long getId() {
 		return id;
@@ -27,4 +32,14 @@ public abstract class Role {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	@JsonIgnore
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
 }

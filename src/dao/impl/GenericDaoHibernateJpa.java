@@ -1,7 +1,6 @@
 package dao.impl;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 
 import dao.GenericDao;
 
@@ -14,8 +13,6 @@ import dao.GenericDao;
 public class GenericDaoHibernateJpa<T> implements GenericDao<T> {
 
 	protected Class<T> persistentClass;
-
-	private EntityManagerFactory entityManagerFactory;
 
 	protected EntityManager entityManager;
 
@@ -33,14 +30,6 @@ public class GenericDaoHibernateJpa<T> implements GenericDao<T> {
 
 	public void setPersistentClass(Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
-	}
-
-	public EntityManagerFactory getEntityManagerFactory() {
-		return entityManagerFactory;
-	}
-
-	public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
-		this.entityManagerFactory = entityManagerFactory;
 	}
 
 	public EntityManager getEntityManager() {
