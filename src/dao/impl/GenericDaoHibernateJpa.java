@@ -2,7 +2,6 @@ package dao.impl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
 
 import dao.GenericDao;
 
@@ -18,7 +17,6 @@ public class GenericDaoHibernateJpa<T> implements GenericDao<T> {
 
 	private EntityManagerFactory entityManagerFactory;
 
-	@PersistenceContext(name = "persUnit")
 	protected EntityManager entityManager;
 
 	public GenericDaoHibernateJpa() {
