@@ -62,8 +62,6 @@ public class DBLoader {
 		UserDao userDao = FactoryDaos.getUserDao(em);
 		MessageDao messageDao = FactoryDaos.getMessageDao(em);
 
-		// TODO mejorar el manejo del entity manager para los dao
-
 		try {
 			et.begin();
 
@@ -295,16 +293,14 @@ public class DBLoader {
 
 			// Nuevo Recorrido
 			Route route = new Route();
-			routeDao.save(route); // esto va antes de guardar la donacion de
-									// recorrido porque es necesario que route
-									// tenga el id
+			routeDao.save(route);
 
 			// Nueva donacion a retirar
 			RouteDonation routeDonation = new RouteDonation();
 			routeDonation.setCollectDate(date);
 			routeDonation.setCollectTime("10:30");
 			routeDonation.setDonation(donation);
-			// JJ
+
 			routeDonationDao.save(routeDonation);
 
 			RouteDonation routeDonation2 = new RouteDonation();
@@ -331,14 +327,23 @@ public class DBLoader {
 			route.addMessage(message);
 			routeDao.update(route);
 
+			System.out.println();
+			System.out.println("------------------------ ELIMINACION ------------------------");
+			System.out.println();
+			routeDonationDao.remove(routeDonation2);
+			donationDao.remove(donation2);
+
 			et.commit();
 
 			System.out.println();
 			System.out.println("------------------------ RECUPERACIONES ------------------------");
 			System.out.println();
-			user3 = userDao.findById(1);
-			System.out.println(user3.getRole().getId() + " " + user3.getRole().getClass().getSimpleName());
-			System.out.println(user3.getId() + " " + user3.getName());
+			ArrayList<User> users = (ArrayList<User>) userDao.getUsers(0, 10);
+			for (User user4 : users) {
+				
+				System.out.println(user4.getRole().getId() + " " + user4.getRole().getClass().getSimpleName());
+				System.out.println(user4.getId() + " " + user4.getName());
+			}
 
 			System.out.println("------------------------ Donaciones de un recorrido ------------------------");
 			ArrayList<RouteDonation> donations = (ArrayList<RouteDonation>) routeDonationDao.getRouteDonations(1);
