@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Donation {
 
@@ -26,8 +28,9 @@ public class Donation {
 	public boolean collected;
 	public Date collectDate;
 	public int collectNumber;
-	@OneToMany(cascade=CascadeType.REMOVE)
+	@OneToMany(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "donation_id")
+	@JsonIgnore
 	public List<Item> items;
 
 	public Donation() {
@@ -120,6 +123,7 @@ public class Donation {
 		this.collectNumber = collectNumber;
 	}
 
+	@JsonIgnore
 	public List<Item> getItems() {
 		return items;
 	}

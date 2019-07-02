@@ -1,6 +1,8 @@
 package factories;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 import dao.AdminDao;
 import dao.BankUserDao;
@@ -26,6 +28,16 @@ import dao.impl.UserDaoHibernateJpa;
 import dao.impl.MessageDaoHibernateJpa;
 
 public class FactoryDaos {
+	static private EntityManagerFactory emf;
+
+	static public EntityManagerFactory getEntityManagerFactory() {
+		if (emf == null) {
+			emf = Persistence.createEntityManagerFactory("persUnit");
+			return emf;
+		} else {
+			return emf;
+		}
+	}
 
 	static public UserDao getUserDao() {
 		return new UserDaoHibernateJpa();
@@ -98,7 +110,7 @@ public class FactoryDaos {
 	static public RouteDao getRouteDao(EntityManager em) {
 		return new RouteDaoHibernateJpa(em);
 	}
-	
+
 	static public RouteDonationDao getRouteDonationDao() {
 		return new RouteDonationDaoHibernateJpa();
 	}
@@ -106,7 +118,7 @@ public class FactoryDaos {
 	static public RouteDonationDao getRouteDonationDao(EntityManager em) {
 		return new RouteDonationDaoHibernateJpa(em);
 	}
-	
+
 	static public MessageDao getMessageDao() {
 		return new MessageDaoHibernateJpa();
 	}

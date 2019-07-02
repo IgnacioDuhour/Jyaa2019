@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import model.Donation;
+import model.Item;
 import services.DonationService;
 import services.impl.DonationServiceImpl;
 
@@ -24,6 +25,7 @@ import services.impl.DonationServiceImpl;
  */
 @Path("/Donations")
 public class DonationController {
+
 	DonationService donationService = new DonationServiceImpl();
 
 	public DonationController() {
@@ -58,6 +60,20 @@ public class DonationController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Donation getDonation(@PathParam("id") long id) {
 		return donationService.getDonation(id);
+	}
+
+	/**
+	 * Listado de los items de una donacion
+	 * 
+	 * @param id
+	 *            identificador de la donacion
+	 * @return listado de items
+	 */
+	@GET
+	@Path("items/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Item> getDonationItems(@PathParam("id") long id) {
+		return donationService.getDonationItems(id);
 	}
 
 	/**

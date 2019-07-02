@@ -26,7 +26,9 @@ import services.impl.UserServiceImpl;
  */
 @Path("/Users")
 public class UserController {
+
 	UserService userService = new UserServiceImpl();
+
 	private String mensaje;
 
 	public UserController() {
@@ -48,6 +50,15 @@ public class UserController {
 		return userService.getUsers(page, size);
 	}
 
+	/**
+	 * Listado de los usuarios con rol de usuario del banco
+	 * 
+	 * @param page
+	 *            pagina a obtener
+	 * @param size
+	 *            tamaño de pagina
+	 * @return listado de usuarios del banco
+	 */
 	@GET
 	@Path("bankUser")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -56,6 +67,15 @@ public class UserController {
 		return userService.getBankUsers(page, size);
 	}
 
+	/**
+	 * Listado de los usuarios con rol de donante
+	 * 
+	 * @param page
+	 *            pagina a obtener
+	 * @param size
+	 *            tamaño de pagina
+	 * @return listado de donantes
+	 */
 	@GET
 	@Path("donorUser")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -76,7 +96,7 @@ public class UserController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getUser(@PathParam("id") long id) {
 		User usr = userService.getUser(id);
-		if (usr.deleted) {
+		if (usr.isDeleted()) {
 			mensaje = "No se encontró el usuario";
 			return Response.status(Response.Status.NOT_FOUND).entity(mensaje).build();
 		} else {

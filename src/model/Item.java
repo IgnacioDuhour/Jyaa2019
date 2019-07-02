@@ -3,6 +3,7 @@ package model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long id;
 	public Date expiration;
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "product_id", nullable = false)
 	public Product product;
 	public int quantity;
