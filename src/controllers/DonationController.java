@@ -43,9 +43,10 @@ public class DonationController {
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Donation> getDonations(@DefaultValue("0") @QueryParam("page") int page,
+	public Response getDonations(@DefaultValue("0") @QueryParam("page") int page,
 			@DefaultValue("10") @QueryParam("size") int size) {
-		return donationService.getDonations(page, size);
+		List<Donation> donations = donationService.getDonations(page, size);
+		return Response.ok().entity(donations).build();
 	}
 
 	/**
@@ -58,8 +59,9 @@ public class DonationController {
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Donation getDonation(@PathParam("id") long id) {
-		return donationService.getDonation(id);
+	public Response getDonation(@PathParam("id") long id) {
+		Donation donation = donationService.getDonation(id);
+		return Response.ok().entity(donation).build();
 	}
 
 	/**
@@ -72,8 +74,9 @@ public class DonationController {
 	@GET
 	@Path("items/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Item> getDonationItems(@PathParam("id") long id) {
-		return donationService.getDonationItems(id);
+	public Response getDonationItems(@PathParam("id") long id) {
+		List<Item> items = donationService.getDonationItems(id);
+		return Response.ok().entity(items).build();
 	}
 
 	/**

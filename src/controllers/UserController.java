@@ -45,9 +45,10 @@ public class UserController {
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<User> getUsers(@DefaultValue("0") @QueryParam("page") int page,
+	public Response getUsers(@DefaultValue("0") @QueryParam("page") int page,
 			@DefaultValue("10") @QueryParam("size") int size) {
-		return userService.getUsers(page, size);
+		List<User> users = userService.getUsers(page, size);
+		return Response.ok().entity(users).build();
 	}
 
 	/**
@@ -62,9 +63,10 @@ public class UserController {
 	@GET
 	@Path("bankUser")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<User> getUsersByType(@DefaultValue("0") @QueryParam("page") int page,
+	public Response getUsersByType(@DefaultValue("0") @QueryParam("page") int page,
 			@DefaultValue("10") @QueryParam("size") int size) {
-		return userService.getBankUsers(page, size);
+		List<User> users = userService.getBankUsers(page, size);
+		return Response.ok().entity(users).build();
 	}
 
 	/**
@@ -79,9 +81,10 @@ public class UserController {
 	@GET
 	@Path("donorUser")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<User> getDonorUsers(@DefaultValue("0") @QueryParam("page") int page,
+	public Response getDonorUsers(@DefaultValue("0") @QueryParam("page") int page,
 			@DefaultValue("10") @QueryParam("size") int size) {
-		return userService.getDonorUsers(page, size);
+		List<User> users = userService.getDonorUsers(page, size);
+		return Response.ok().entity(users).build();
 	}
 
 	/**
