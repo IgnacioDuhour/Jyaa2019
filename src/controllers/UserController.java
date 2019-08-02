@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -15,6 +16,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import model.User;
 import services.UserService;
 import services.impl.UserServiceImpl;
@@ -148,7 +152,37 @@ public class UserController {
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response deleteUser(@PathParam("id") long id) {
-		User usr = userService.deletUser(id);
+		User usr = userService.deleteUser(id);
 		return Response.accepted().entity(usr).build();
 	}
+
+	@POST
+	@Path("login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response login(User user) {
+		User usr = userService.getUserByUsername(user.getUsername());
+		if (usr.getName() == null) {
+			mensaje = "No se encontró el usuario";
+			return Response.status(Response.Status.NOT_FOUND).entity(mensaje).build();
+		} else if (user.getPassword().equals(usr.getPassword())) {
+			String token = getToken(usr);
+			usr.setToken(token);
+			return Response.ok().entity(usr).build();
+		} else {
+			mensaje = "Nombre de usuario o password incorrecto";
+			return Response.status(Response.Status.FORBIDDEN).entity(mensaje).build();
+		}
+	}
+
+	private String getToken(User user) {
+		String secretKey = "mySecretKey";
+		String token = Jwts.builder().setId("BancoAlimentosLP").setSubject(user.getUsername())
+				.claim("authorities", Claims.SUBJECT)
+				.setIssuedAt(new Date(System.currentTimeMillis()))
+				.setExpiration(new Date(System.currentTimeMillis() + 600000))
+				.signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
+		return "Bearer " + token;
+	}
+
 }

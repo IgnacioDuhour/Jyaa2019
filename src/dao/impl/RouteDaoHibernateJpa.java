@@ -26,7 +26,7 @@ public class RouteDaoHibernateJpa extends GenericDaoHibernateJpa<Route> implemen
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Route> getRoutes() {
-		return this.entityManager.createQuery("SELECT r FROM Route r").getResultList();
+		return this.entityManager.createQuery("SELECT r FROM Route r WHERE r.deleted = false").getResultList();
 	}
 
 }

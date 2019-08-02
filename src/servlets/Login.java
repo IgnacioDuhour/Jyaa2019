@@ -25,7 +25,6 @@ public class Login extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		// TODO Auto-generated method stub
 		super.init();
 		Enumeration<String> params = getInitParameterNames();
 		while (params.hasMoreElements()) {
@@ -39,14 +38,12 @@ public class Login extends HttpServlet {
 	 */
 	public Login() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

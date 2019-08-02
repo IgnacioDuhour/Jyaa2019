@@ -19,6 +19,7 @@ public class Product {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "type_id", nullable = false)
 	public Type type;
+	public boolean deleted;
 
 	public Product() {
 	}
@@ -53,6 +54,14 @@ public class Product {
 
 	public void setType(Type type) {
 		this.type = type;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 }

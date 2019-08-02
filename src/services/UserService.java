@@ -10,11 +10,13 @@ public interface UserService {
 
 	public User getUser(long id);
 
+	public User getUserByUsername(String username);
+
 	public User newUser(User user);
 
 	public User updateUser(User user);
 
-	public User deletUser(long id);
+	public User deleteUser(long id);
 
 	public List<User> getBankUsers(int page, int size);
 

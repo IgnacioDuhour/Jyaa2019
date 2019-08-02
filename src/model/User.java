@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class User {
@@ -23,6 +24,8 @@ public class User {
 	@JoinColumn(name = "role_id", nullable = false)
 	public Role role;
 	public boolean deleted;
+	@Transient
+	public String token;
 
 	public User() {
 		super();
@@ -100,6 +103,14 @@ public class User {
 
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 }

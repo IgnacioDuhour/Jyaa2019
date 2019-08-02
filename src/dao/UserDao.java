@@ -22,4 +22,5 @@ public interface UserDao extends GenericDao<User> {
 	 */
 	public List<User> getUsers(int page, int size);
 
+	public User getByUsername(String username);
 }

@@ -30,6 +30,9 @@ public class DonationServiceImpl implements DonationService {
 		em = FactoryDaos.getEntityManagerFactory().createEntityManager();
 		donationDao.setEntityManager(em);
 		donations = donationDao.getDonations(page, size);
+		for (Donation donation : donations) {
+			donation.setItemsSize(donation.getItems().size());
+		}
 		em.close();
 		return donations;
 	}

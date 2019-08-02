@@ -43,6 +43,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public User getUserByUsername(String username) {
+		em = FactoryDaos.getEntityManagerFactory().createEntityManager();
+		userDao.setEntityManager(em);
+		User user = userDao.getByUsername(username);
+		em.close();
+		return user;
+	}
+
+	@Override
 	public User newUser(User user) {
 		em = FactoryDaos.getEntityManagerFactory().createEntityManager();
 		userDao.setEntityManager(em);
@@ -67,7 +76,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User deletUser(long id) {
+	public User deleteUser(long id) {
 		em = FactoryDaos.getEntityManagerFactory().createEntityManager();
 		userDao.setEntityManager(em);
 		EntityTransaction et = em.getTransaction();

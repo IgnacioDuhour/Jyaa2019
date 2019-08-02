@@ -11,7 +11,6 @@ import model.Item;
 public class ItemDaoHibernateJpa extends GenericDaoHibernateJpa<Item> implements ItemDao {
 
 	public ItemDaoHibernateJpa() {
-		// TODO Auto-generated constructor stub
 		super(Item.class);
 	}
 

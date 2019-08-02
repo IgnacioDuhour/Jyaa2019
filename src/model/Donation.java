@@ -32,6 +32,7 @@ public class Donation {
 	@JoinColumn(name = "donation_id")
 	@JsonIgnore
 	public List<Item> items;
+	public int itemsSize;
 
 	public Donation() {
 		this.items = new ArrayList<Item>();
@@ -135,4 +136,13 @@ public class Donation {
 	public void addItem(Item item) {
 		this.items.add(item);
 	}
+
+	public int getItemsSize() {
+		return itemsSize;
+	}
+
+	public void setItemsSize(int itemsSize) {
+		this.itemsSize = itemsSize;
+	}
+
 }

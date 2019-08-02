@@ -12,6 +12,7 @@ public class Type {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long id;
 	public String name;
+	public boolean deleted;
 
 	public Type() {
 	}
@@ -30,6 +31,14 @@ public class Type {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 }

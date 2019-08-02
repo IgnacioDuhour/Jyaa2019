@@ -29,7 +29,6 @@ public class DonationController {
 	DonationService donationService = new DonationServiceImpl();
 
 	public DonationController() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -95,6 +94,5 @@ public class DonationController {
 	public Response markCollected(@PathParam("id") long id, Donation donation) {
 		donation = donationService.markCollected(id, donation.getCollectNumber(), donation.getCollectDate());
 		return Response.ok().entity(donation).build();
-
 	}
 }
