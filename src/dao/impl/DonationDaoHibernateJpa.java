@@ -21,7 +21,14 @@ public class DonationDaoHibernateJpa extends GenericDaoHibernateJpa<Donation> im
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Donation> getDonations(int page, int size) {
-		return this.entityManager.createQuery("SELECT d FROM Donation d").setFirstResult(page * size)
-				.setMaxResults(size).getResultList();
+		return this.entityManager.createQuery("SELECT d FROM Donation d WHERE d.deleted = false")
+				.setFirstResult(page * size).setMaxResults(size).getResultList();
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Donation> getAvailableDonations() {
+		return this.entityManager.createQuery("SELECT d FROM Donation d WHERE d.collected = false").getResultList();
+	}
+
 }

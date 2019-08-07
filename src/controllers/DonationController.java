@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -49,6 +50,19 @@ public class DonationController {
 	}
 
 	/**
+	 * Listado de donaciones sin retirar
+	 * 
+	 * @return listado de donaciones
+	 */
+	@GET
+	@Path("available")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAvailableDonations() {
+		List<Donation> donations = donationService.getAvailableDonations();
+		return Response.ok().entity(donations).build();
+	}
+
+	/**
 	 * Recupera una donacion a partir de un id
 	 * 
 	 * @param id
@@ -76,6 +90,21 @@ public class DonationController {
 	public Response getDonationItems(@PathParam("id") long id) {
 		List<Item> items = donationService.getDonationItems(id);
 		return Response.ok().entity(items).build();
+	}
+
+	/**
+	 * Crea una nueva donacion
+	 * 
+	 * @param donation
+	 *            donacion a guardad
+	 * @return donacion guardada
+	 */
+	@POST
+	@Consumes
+	@Produces
+	public Response newDonation(Donation donation) {
+		donationService.newDonation(donation);
+		return Response.ok().entity(donation).build();
 	}
 
 	/**

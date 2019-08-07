@@ -91,7 +91,7 @@ public class TypeController {
 	@DELETE
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deletType(@PathParam("id") long id) {
+	public Response deleteType(@PathParam("id") long id) {
 		Type tp = typeService.deleteType(id);
 		return Response.ok().entity(tp).build();
 	}

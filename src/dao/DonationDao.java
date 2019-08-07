@@ -16,4 +16,11 @@ public interface DonationDao extends GenericDao<Donation> {
 	 * @return listado de las donaciones
 	 */
 	public List<Donation> getDonations(int page, int size);
+
+	/**
+	 * Listado de las donaciones no retiradas
+	 * 
+	 * @return listado de donaciones
+	 */
+	public List<Donation> getAvailableDonations();
 }

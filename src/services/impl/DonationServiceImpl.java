@@ -38,10 +38,39 @@ public class DonationServiceImpl implements DonationService {
 	}
 
 	@Override
+	public List<Donation> getAvailableDonations() {
+		em = FactoryDaos.getEntityManagerFactory().createEntityManager();
+		donationDao.setEntityManager(em);
+		donations = donationDao.getAvailableDonations();
+		for (Donation donation : donations) {
+			donation.setItemsSize(donation.getItems().size());
+		}
+		em.close();
+		return donations;
+	}
+
+	@Override
 	public Donation getDonation(long id) {
 		em = FactoryDaos.getEntityManagerFactory().createEntityManager();
 		donationDao.setEntityManager(em);
 		Donation donation = donationDao.findById(id);
+		em.close();
+		return donation;
+	}
+
+	@Override
+	public Donation newDonation(Donation donation) {
+		em = FactoryDaos.getEntityManagerFactory().createEntityManager();
+		donationDao.setEntityManager(em);
+		itemDao.setEntityManager(em);
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		List<Item> items = donation.getItems();
+		for (Item item : items) {
+			itemDao.save(item);
+		}
+		donationDao.save(donation);
+		et.commit();
 		em.close();
 		return donation;
 	}

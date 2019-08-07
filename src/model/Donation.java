@@ -33,6 +33,7 @@ public class Donation {
 	@JsonIgnore
 	public List<Item> items;
 	public int itemsSize;
+	public boolean deleted;
 
 	public Donation() {
 		this.items = new ArrayList<Item>();
@@ -143,6 +144,14 @@ public class Donation {
 
 	public void setItemsSize(int itemsSize) {
 		this.itemsSize = itemsSize;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 }
