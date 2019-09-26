@@ -179,6 +179,7 @@ public class UserController {
 		String secretKey = "mySecretKey";
 		String token = Jwts.builder().setId("BancoAlimentosLP").setSubject(user.getUsername())
 				.claim("authorities", Claims.SUBJECT)
+				.claim("role", user.getRole().getClass().getSimpleName())
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + 600000))
 				.signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
